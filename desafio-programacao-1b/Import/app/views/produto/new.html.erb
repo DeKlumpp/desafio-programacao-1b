@@ -1,0 +1,7 @@
+<body>
+    <h1><%= link_to image_tag('back.png', title: "Voltar"), "show" %> Importar arquivo</h1>
+    <%= form_tag({:action => :new}, :multipart => true) do %>
+      <p><%= file_field_tag 'file' %></p>
+      <p><%= submit_tag "Enviar",  :controller => "produto", :action => "new"%></p>
+    <% end %>
+</body>

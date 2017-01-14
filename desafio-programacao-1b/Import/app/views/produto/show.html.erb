@@ -1,0 +1,36 @@
+<body>
+  <h1>Lista de  Importação - Nexaas</h1>
+
+    <%= form_tag({:action => :new}, :multipart => true) do %>
+      <p class="btn-file" style="float: right">
+        <input type="file" name="file" id="file" />
+        <%= submit_tag "Enviar",  :controller => "produto", :action => "new", data: { confirm: "Deseja enviar o documento?" }, disabled: true %>
+      </p>
+    <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Comprador</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Endereço</th>
+        <th>Fornecedor</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @produtos.each do |produto| %>
+        <tr>
+            <td><%= produto.comprador %></td>
+            <td><%= produto.descricao %></td>
+            <td>R$ <%= produto.preco %></td>
+            <td><%= produto.quantidade %></td>
+            <td><%= produto.endereco %></td>
+            <td><%= produto.fornecedor %></td>
+        </tr>
+       <% end %>
+    </tbody>
+  </table>
+  <h4> Receita bruta total: R$ <%= @sum %> </h4>
+</body>
